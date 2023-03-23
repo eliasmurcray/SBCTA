@@ -1,2 +1,6 @@
 .DS_STORE
 node_modules/
+public/
+.firebase
+.firebaserc
+package-lock.json
