@@ -97,17 +97,28 @@ section {
   }
 }
 
+// .news .waves .parallax {
+//   fill: #ffffff;
+// }
+
+// .about .waves .parallax {
+//   fill: #2e94d3;
+// }
+
 .waves {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate3d(0, -100%, 0);
+  transform: translateY(-100%);
   width: 100%;
   display: block;
 
   .parallax {
     use {
-      animation: wave 50s cubic-bezier(.55, .5, .45, .5) infinite;
+      animation-name: wave;
+      animation-timing-function: cubic-bezier(.55, .5, .45, .5);
+      animation-iteration-count: infinite;
+      will-change: fill;
   
       &:nth-child(1) {
         animation-delay: -2s;
@@ -137,10 +148,10 @@ section {
 
 @keyframes wave {
   0% {
-    transform: translate3d(-90px, 0, 0);
+    transform: translateX(-90px);
   }
 
   100% {
-    transform: translate3d(85px, 0, 0);
+    transform: translateX(85px);
   }
 }
