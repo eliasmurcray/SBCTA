@@ -97,13 +97,28 @@ section {
   }
 }
 
-// .news .waves .parallax {
-//   fill: #ffffff;
-// }
+.news {
+  a {
+    display: inline-block;
+    text-decoration: none;
+    font: inherit;
+    color: #121315;
+    border: 1px solid #121315;
+    background-color: #0000;
+    outline: 0;
+    box-shadow: none;
+    padding: .5rem 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color .1s ease-in-out,
+      color .1s ease-in-out;
 
-// .about .waves .parallax {
-//   fill: #2e94d3;
-// }
+    &:hover {
+      background-color: #121315;
+      color: #fff;
+    }
+  }
+}
 
 .waves {
   position: absolute;
@@ -112,13 +127,13 @@ section {
   transform: translateY(-100%);
   width: 100%;
   display: block;
+  max-height: 180px;
 
   .parallax {
     use {
       animation-name: wave;
       animation-timing-function: cubic-bezier(.55, .5, .45, .5);
       animation-iteration-count: infinite;
-      will-change: fill;
   
       &:nth-child(1) {
         animation-delay: -2s;

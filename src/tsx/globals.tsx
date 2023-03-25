@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, FormEvent, MouseEvent, RefObject } from 'react';
 
 export class AppHeader extends Component {
   render() {
@@ -30,9 +30,25 @@ export class AppHeader extends Component {
           <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
-      <button className="subscribe-button" onClick={void 0}>
-        Subscribe
-      </button>
+      <button className="subscribe-button" onClick={() => {
+        const overlay = document.getElementById('subscribe-overlay');
+        const modal = overlay.getElementsByClassName('subscribe-modal')[0] as HTMLDivElement;
+
+        if(overlay.classList.contains('hidden')) {
+          overlay.classList.remove('hidden');
+          modal.classList.add('toggled');
+        } else {
+          if(!modal.classList.contains('toggled')) {
+            modal.classList.add('toggled');
+          } else {
+            modal.classList.remove('toggled');
+            modal.ontransitionend = () => {
+              modal.classList.remove('toggled');
+              overlay.classList.add('hidden');
+            };
+          }
+        }
+      }}>Subscribe</button>
     </header>;
   }
 }
@@ -84,5 +100,51 @@ export class MobileNav extends Component {
         <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>;
+  }
+}
+
+export class EmailSubscribeModal extends Component {
+  constructor(props: {} | Readonly<{}>) {
+    super(props);
+  }
+
+  handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    console.log('completed form');
+  }
+
+  render() {
+    return <div id="subscribe-overlay" className="subscribe-overlay hidden">
+      <div className="subscribe-modal">
+        <button className="close-modal"
+        onClick={(event: MouseEvent) => {
+          const target = event.target as HTMLButtonElement;
+          target.parentElement.parentElement.classList.add('hidden');
+        }}>x</button>
+        <h2>Join Our Newsletter</h2>
+        <div style={{
+          marginBottom: '2rem',
+          color: '#73777b'
+        }}>Sign up to our newsletter to receive important updates</div>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <input type="first-name" placeholder="First Name" />
+            <input type="last-name" placeholder="Last Name" />
+          </div>
+          <input type="email" placeholder="Email Address" />
+          <div style={{
+            marginTop: '1rem',
+            columnGap: '.75rem'
+          }}>
+            <label className="switch">
+              <input type="checkbox" />
+              <span className="slider"></span>
+            </label>
+            Receive free updates
+          </div>
+          <input type="submit" value="Sign Up" />
+        </form>
+      </div>
+    </div>;
   }
 }
