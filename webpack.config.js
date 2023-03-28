@@ -6,7 +6,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const names = [
-  'index'
+  'index',
+  'contact',
+  '404'
 ];
 
 const entries = {};
@@ -29,7 +31,9 @@ Object.keys(entries).forEach((entry) => {
 module.exports = {
   mode: 'production',
   entry: {
-    'index': '/src/tsx/index.tsx'
+    'index': '/src/tsx/index.tsx',
+    'contact': '/src/tsx/contact.tsx',
+    '404': '/src/tsx/404.tsx'
   },
   module: {
     rules: [
@@ -72,6 +76,10 @@ module.exports = {
       patterns: [
         {
           from: './src/images',
+          to: ''
+        },
+        {
+          from: './src/favicons',
           to: ''
         }
       ]

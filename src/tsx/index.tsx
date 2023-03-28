@@ -1,4 +1,4 @@
-import React, { Component, LegacyRef, RefObject } from 'react';
+import React, { Component } from 'react';
 import { createRoot } from 'react-dom/client';
 import '../scss/index.scss';
 import { AppHeader, AppFooter, MobileNav, EmailSubscribeModal } from './globals';
@@ -27,18 +27,18 @@ class SVGWaves extends Component<SVGWavesProps> {
 
 class App extends Component {
   render() {
-    return <div>
+    return <div className="app-root">
       <AppHeader />
       <MobileNav />
       <EmailSubscribeModal />
       <section className="hero">
           <header className="hero__header">
-            <img src="leaf.png" width="148" />
+            <img src="leaf.png" width="148" height="148" />
             <h1>San Bernardino County Teacher's Assocation</h1>
             <div>Empowering educators, enriching communities</div>
           </header>
       </section>
-      <section className="about" style={{ paddingBottom: "180px"}}>
+      <section className="about">
         <SVGWaves fillColor="#2e94d3"/>
         <div>
           <h2>Mission Statement</h2>

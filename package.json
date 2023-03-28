@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/react-google-recaptcha": "^2.1.5",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^4.2.2",
@@ -32,5 +33,9 @@
     "ts-loader": "^9.4.2",
     "webpack": "^5.76.2",
     "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "random-animal-name": "^0.1.1",
+    "react-google-recaptcha": "^2.1.0"
   }
 }
