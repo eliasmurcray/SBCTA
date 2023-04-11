@@ -63,11 +63,18 @@ body {
     display: flex;
     align-items: center;
 
-    h2 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      font-family: var(--header-font);
-      padding-left: .5rem;
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+
+      h2 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        font-family: var(--header-font);
+        padding-left: .5rem;
+        color: #121315;
+      }
     }
   }
 
@@ -299,9 +306,13 @@ footer {
   .footer-bottom {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-top: 1rem;
     max-width: 1000px;
     margin: 0 auto;
+    padding-top: 2rem;
+    font-weight: 400;
+    font-family: var(--header-font);
 
     img {
       margin-right: .5rem;

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { createRoot } from 'react-dom/client';
 import { AppHeader, AppFooter, MobileNav, EmailSubscribeModal } from './globals';
-import '../scss/global.scss';
 
 class App extends Component {
   render() {
-    return <div className="app-root">
+    return <div className='app-root'>
       <AppHeader />
       <MobileNav />
       <EmailSubscribeModal />

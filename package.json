@@ -4,7 +4,8 @@
   "description": "Online hub for San Bernardino County Teacher's Association (SBCTA). Provides information, resources, advocacy tools, membership management, and communication for teachers. Built with React, hosted on Firebase.",
   "main": "src/ts/index.ts",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "webpack && firebase deploy"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
+    "firebase": "^9.19.1",
     "random-animal-name": "^0.1.1",
     "react-google-recaptcha": "^2.1.0"
   }

@@ -1,37 +1,36 @@
 import React, { Component, FormEvent, MouseEvent, RefObject, createRef } from 'react';
+import '../scss/global.scss';
 import randomAnimalName from 'random-animal-name';
 
 export class AppHeader extends Component {
   render() {
-    return <header className="main-header">
+    return <header className='main-header'>
       <div>
-        <button className="mobile-toggle" onClick={(e)=>{
+        <button className='mobile-toggle' onClick={(e)=>{
           let element = e.target as HTMLButtonElement;
           element.classList.toggle('toggled');
           let nav = document.getElementsByClassName('mobile-nav')[0] as HTMLElement;
           nav.classList.toggle('toggled');
         }}>
-          <svg width="35" height="35" viewBox="0 0 100 100" fill="#0000" stroke="#000" stroke-width="5" strokeLinecap="round">
-            <path className="line1" d="M20 30H80L80 80L20 20"/>
-            <path className="line2" d="M20 50H80"/>
-            <path className="line3" d="M20 70H80L80 20L20 80"/>
+          <svg width='35' height='35' viewBox='0 0 100 100' fill='#0000' stroke='#000' stroke-width='5' strokeLinecap='round'>
+            <path className='line1' d='M20 30H80L80 80L20 20'/>
+            <path className='line2' d='M20 50H80'/>
+            <path className='line3' d='M20 70H80L80 20L20 80'/>
           </svg>
         </button>
-        <img src="leaf.png" height="34" />
-        <h2>SBCTA</h2>
+        <a href='/'>
+          <img src='leaf.png' height='34' />
+          <h2>SBCTA</h2>
+        </a>
       </div>
-      <nav className="web-nav">
+      <nav className='web-nav'>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/news">News</a></li>
-          <li><a href="/members">Members</a></li>
-          <li><a href="/agendas">Minutes</a></li>
-          <li><a href="/events">Events</a></li>
-          <li><a href="/conferences">Conferences</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href='/'>Home</a></li>
+          <li><a href='/leadership'>Leadership</a></li>
+          <li><a href='/documents'>Documents</a></li>
         </ul>
       </nav>
-      <button className="subscribe-button" onClick={(event) => {
+      <button className='subscribe-button' onClick={(event) => {
         event.stopPropagation();
         const overlay = document.getElementById('subscribe-overlay');
         const modal = overlay.getElementsByClassName('subscribe-modal')[0] as HTMLDivElement;
@@ -63,7 +62,7 @@ export class AppHeader extends Component {
 export class AppFooter extends Component {
   render() {
     return <footer>
-      <div className="footer-top">
+      <div className='footer-top'>
         <article>
           <header><h3>Contact</h3></header>
           123 Main Street<br />
@@ -75,20 +74,15 @@ export class AppFooter extends Component {
           <header><h3>Pages</h3></header>
           <nav>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/news">News</a></li>
-              <li><a href="/members">Members</a></li>
-              <li><a href="/agendas">Minutes</a></li>
-              <li><a href="/events">Events</a></li>
-              <li><a href="/conferences">Conferences</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li><a href='/'>Home</a></li>
+              <li><a href='/leadership'>Leadership</a></li>
+              <li><a href='/documents'>Documents</a></li>
             </ul>
           </nav>
         </article>
       </div>
-      <div className="footer-bottom">
-        <img src="leaf.png" height="34" />
-        <a href="https://www.flaticon.com/free-icons/leaf" title="leaf icons" target="_blank">Leaf icons created by bqlqn - Flaticon</a>
+      <div className='footer-bottom'>
+        Designed by Elias Murcray
       </div>
     </footer>;
   }
@@ -96,15 +90,11 @@ export class AppFooter extends Component {
 
 export class MobileNav extends Component {
   render() {
-    return <nav className="mobile-nav">
+    return <nav className='mobile-nav'>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/news">News</a></li>
-        <li><a href="/members">Members</a></li>
-        <li><a href="/agendas">Minutes</a></li>
-        <li><a href="/events">Events</a></li>
-        <li><a href="/conferences">Conferences</a></li>
-        <li><a href="/contact">Contact</a></li>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/leadership'>Leadership</a></li>
+      <li><a href='/documents'>Documents</a></li>
       </ul>
     </nav>;
   }
@@ -230,23 +220,23 @@ export class EmailSubscribeModal extends Component {
   }
 
   render() {
-    return <div id="subscribe-overlay" className="subscribe-overlay hidden">
-      <div className="subscribe-modal">
-        <button className="close-modal" onClick={this.closeModal}>x</button>
-        {this.state.subscribed ? <div className="subscribed">
+    return <div id='subscribe-overlay' className='subscribe-overlay hidden'>
+      <div className='subscribe-modal'>
+        <button className='close-modal' onClick={this.closeModal}>x</button>
+        {this.state.subscribed ? <div className='subscribed'>
           <h2>Subscribed!</h2>
           <div>Thank you for subscribing to our newsletter!</div>
         </div>
         : <div><h2>Join Our Newsletter</h2>
-        <div className="disclaimer">Sign up to our newsletter to receive important updates from SBCTA</div>
+        <div className='disclaimer'>Sign up to our newsletter to receive important updates from SBCTA</div>
         <form onSubmit={this.handleSubmit}>
-          <div className="name-inputs">
-            <input ref={this.firstNameRef} type="first-name" placeholder="First Name" />
-            <input ref={this.lastNameRef} type="last-name" placeholder="Last Name" />
+          <div className='name-inputs'>
+            <input ref={this.firstNameRef} type='first-name' placeholder='First Name' />
+            <input ref={this.lastNameRef} type='last-name' placeholder='Last Name' />
           </div>
-          <input ref={this.emailRef} type="email" placeholder="Email Address" />
-          <div className="g-recaptcha" data-sitekey="6LfWpjQlAAAAABn9WPAg4LePch6T1SBegi3NTa9V" data-callback="recaptchaCallback" data-expired-callback="recaptchaExpiredCallback"></div>
-          <input type="submit" value="Sign Up" disabled={this.state.disabled} />
+          <input ref={this.emailRef} type='email' placeholder='Email Address' />
+          <div className='g-recaptcha' data-sitekey='6LfWpjQlAAAAABn9WPAg4LePch6T1SBegi3NTa9V' data-callback='recaptchaCallback' data-expired-callback='recaptchaExpiredCallback'></div>
+          <input type='submit' value='Sign Up' disabled={this.state.disabled} />
         </form></div>}
       </div>
     </div>;

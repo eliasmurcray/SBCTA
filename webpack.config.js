@@ -7,13 +7,15 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const names = [
   'index',
-  'contact',
-  '404'
+  '404',
+  'leadership',
+  'documents',
+  'admin'
 ];
 
 const entries = {};
 names.forEach((name) => {
-  entries[name] = '/src/tsx/' + name + '.tsx';
+  entries[name] = '/src/components/' + name + '.tsx';
 });
 
 const plugins = [];
@@ -30,10 +32,9 @@ Object.keys(entries).forEach((entry) => {
 
 module.exports = {
   mode: 'production',
-  entry: {
-    'index': '/src/tsx/index.tsx',
-    'contact': '/src/tsx/contact.tsx',
-    '404': '/src/tsx/404.tsx'
+  entry: entries,
+  experiments: {
+    topLevelAwait: true
   },
   module: {
     rules: [
